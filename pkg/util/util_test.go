@@ -12,6 +12,8 @@ import (
 func TestFilterString(t *testing.T) {
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	filterStringTests := []struct {
 		label		string
 		needle		string
@@ -36,6 +38,8 @@ func TestFilterString(t *testing.T) {
 func TestReleaseVersionMatches(t *testing.T) {
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	releaseVersion := "v100"
 	deployment := &appsv1.Deployment{TypeMeta: metav1.TypeMeta{Kind: "Deployment", APIVersion: "apps/v1"}, ObjectMeta: metav1.ObjectMeta{Name: "test", Namespace: "test-namespace"}}
 	testCases := []struct {
@@ -56,6 +60,8 @@ func TestReleaseVersionMatches(t *testing.T) {
 func TestDeploymentUpdated(t *testing.T) {
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	deployment := &appsv1.Deployment{TypeMeta: metav1.TypeMeta{Kind: "Deployment", APIVersion: "apps/v1"}, ObjectMeta: metav1.ObjectMeta{Name: "test", Namespace: "test-namespace", Generation: 100}}
 	testCases := []struct {
 		label		string
@@ -73,6 +79,8 @@ func TestDeploymentUpdated(t *testing.T) {
 	}
 }
 func TestResetProgressingTime(t *testing.T) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	ConditionTransitionTime := metav1.NewTime(time.Date(2009, time.November, 10, 23, 0, 0, 0, time.UTC))

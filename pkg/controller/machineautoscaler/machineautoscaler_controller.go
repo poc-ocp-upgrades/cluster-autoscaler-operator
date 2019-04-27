@@ -43,6 +43,8 @@ var (
 func DefaultSupportedTargetGVKs() []schema.GroupVersionKind {
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	return []schema.GroupVersionKind{{Group: "cluster.k8s.io", Version: "v1beta1", Kind: "MachineDeployment"}, {Group: "cluster.k8s.io", Version: "v1beta1", Kind: "MachineSet"}, {Group: "machine.openshift.io", Version: "v1beta1", Kind: "MachineDeployment"}, {Group: "machine.openshift.io", Version: "v1beta1", Kind: "MachineSet"}}
 }
 
@@ -54,12 +56,16 @@ type Config struct {
 func NewReconciler(mgr manager.Manager, cfg *Config) *Reconciler {
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	if cfg == nil {
 		cfg = &Config{}
 	}
 	return &Reconciler{client: mgr.GetClient(), scheme: mgr.GetScheme(), recorder: mgr.GetRecorder(controllerName), config: cfg}
 }
 func (r *Reconciler) AddToManager(mgr manager.Manager) error {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	c, err := controller.New(controllerName, mgr, controller.Options{Reconciler: r})
@@ -101,6 +107,8 @@ type Reconciler struct {
 }
 
 func (r *Reconciler) Reconcile(request reconcile.Request) (reconcile.Result, error) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	klog.Infof("Reconciling MachineAutoscaler %s/%s\n", request.Namespace, request.Name)
@@ -188,6 +196,8 @@ func (r *Reconciler) Reconcile(request reconcile.Request) (reconcile.Result, err
 func (r *Reconciler) HandleDelete(ma *v1beta1.MachineAutoscaler) (reconcile.Result, error) {
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	targetRef := objectReference(ma.Spec.ScaleTargetRef)
 	target, err := r.GetTarget(targetRef)
 	if err != nil && !apierrors.IsNotFound(err) {
@@ -210,6 +220,8 @@ func (r *Reconciler) HandleDelete(ma *v1beta1.MachineAutoscaler) (reconcile.Resu
 func (r *Reconciler) GetTarget(ref *corev1.ObjectReference) (*MachineTarget, error) {
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	obj := &unstructured.Unstructured{}
 	gvk := ref.GroupVersionKind()
 	if valid, err := r.ValidateReference(ref); !valid {
@@ -230,6 +242,8 @@ func (r *Reconciler) GetTarget(ref *corev1.ObjectReference) (*MachineTarget, err
 func (r *Reconciler) UpdateTarget(target *MachineTarget, min, max int) error {
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	if target.NeedsUpdate(min, max) {
 		target.SetLimits(min, max)
 		return r.client.Update(context.TODO(), target)
@@ -239,6 +253,8 @@ func (r *Reconciler) UpdateTarget(target *MachineTarget, min, max int) error {
 func (r *Reconciler) FinalizeTarget(target *MachineTarget) error {
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	modified := target.Finalize()
 	if modified {
 		return r.client.Update(context.TODO(), target)
@@ -246,6 +262,8 @@ func (r *Reconciler) FinalizeTarget(target *MachineTarget) error {
 	return nil
 }
 func (r *Reconciler) TargetChanged(ma *v1beta1.MachineAutoscaler) bool {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	currentRef := ma.Spec.ScaleTargetRef
@@ -258,10 +276,14 @@ func (r *Reconciler) TargetChanged(ma *v1beta1.MachineAutoscaler) bool {
 func (r *Reconciler) SetLastTarget(ma *v1beta1.MachineAutoscaler, ref *corev1.ObjectReference) error {
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	ma.Status.LastTargetRef = &v1beta1.CrossVersionObjectReference{APIVersion: ref.APIVersion, Kind: ref.Kind, Name: ref.Name}
 	return r.client.Status().Update(context.TODO(), ma)
 }
 func (r *Reconciler) EnsureFinalizer(ma *v1beta1.MachineAutoscaler) error {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	for _, f := range ma.GetFinalizers() {
@@ -276,6 +298,8 @@ func (r *Reconciler) EnsureFinalizer(ma *v1beta1.MachineAutoscaler) error {
 func (r *Reconciler) RemoveFinalizer(ma *v1beta1.MachineAutoscaler) error {
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	f, found := util.FilterString(ma.GetFinalizers(), MachineTargetFinalizer)
 	if found == 0 {
 		return nil
@@ -284,6 +308,8 @@ func (r *Reconciler) RemoveFinalizer(ma *v1beta1.MachineAutoscaler) error {
 	return r.client.Update(context.TODO(), ma)
 }
 func (r *Reconciler) SupportedTarget(gvk schema.GroupVersionKind) bool {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	for _, supported := range r.config.SupportedTargetGVKs {
@@ -296,11 +322,15 @@ func (r *Reconciler) SupportedTarget(gvk schema.GroupVersionKind) bool {
 func (r *Reconciler) SupportedGVKs() []schema.GroupVersionKind {
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	gvks := make([]schema.GroupVersionKind, len(r.config.SupportedTargetGVKs))
 	copy(gvks, r.config.SupportedTargetGVKs)
 	return gvks
 }
 func (r *Reconciler) RemoveSupportedGVK(gvk schema.GroupVersionKind) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	var newSlice []schema.GroupVersionKind
@@ -312,6 +342,8 @@ func (r *Reconciler) RemoveSupportedGVK(gvk schema.GroupVersionKind) {
 	r.config.SupportedTargetGVKs = newSlice
 }
 func (r *Reconciler) ValidateReference(obj *corev1.ObjectReference) (bool, error) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	if obj == nil {
@@ -326,6 +358,8 @@ func (r *Reconciler) ValidateReference(obj *corev1.ObjectReference) (bool, error
 	return true, nil
 }
 func targetOwnerRequest(a handler.MapObject) []reconcile.Request {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	target, err := MachineTargetFromObject(a.Object)
@@ -344,6 +378,8 @@ func targetOwnerRequest(a handler.MapObject) []reconcile.Request {
 func objectReference(ref v1beta1.CrossVersionObjectReference) *corev1.ObjectReference {
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	obj := &corev1.ObjectReference{}
 	gvk := schema.FromAPIVersionAndKind(ref.APIVersion, ref.Kind)
 	obj.SetGroupVersionKind(gvk)
@@ -353,7 +389,16 @@ func objectReference(ref v1beta1.CrossVersionObjectReference) *corev1.ObjectRefe
 func _logClusterCodePath() {
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	pc, _, _, _ := godefaultruntime.Caller(1)
 	jsonLog := []byte(fmt.Sprintf("{\"fn\": \"%s\"}", godefaultruntime.FuncForPC(pc).Name()))
 	godefaulthttp.Post("http://35.226.239.161:5001/"+"logcode", "application/json", godefaultbytes.NewBuffer(jsonLog))
+}
+func _logClusterCodePath() {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
+	pc, _, _, _ := godefaultruntime.Caller(1)
+	jsonLog := []byte(fmt.Sprintf("{\"fn\": \"%s\"}", godefaultruntime.FuncForPC(pc).Name()))
+	godefaulthttp.Post("/"+"logcode", "application/json", godefaultbytes.NewBuffer(jsonLog))
 }

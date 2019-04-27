@@ -19,9 +19,13 @@ type TargetOwner struct {
 func NewTargetOwner(namespace, name string) *TargetOwner {
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	return &TargetOwner{ObjectMeta: metav1.ObjectMeta{Name: name, Namespace: namespace}}
 }
 func NewTarget() *MachineTarget {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	firstGVK := DefaultSupportedTargetGVKs()[0]
@@ -36,6 +40,8 @@ func NewTarget() *MachineTarget {
 	return target
 }
 func TestNeedsUpdate(t *testing.T) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	target := NewTarget()
@@ -54,6 +60,8 @@ func TestNeedsUpdate(t *testing.T) {
 func TestSetLimits(t *testing.T) {
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	target := NewTarget()
 	expectedMin, expectedMax := 2, 4
 	target.SetLimits(expectedMin, expectedMax)
@@ -66,6 +74,8 @@ func TestSetLimits(t *testing.T) {
 	}
 }
 func TestGetLimits(t *testing.T) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	target := NewTarget()
@@ -96,6 +106,8 @@ func TestGetLimits(t *testing.T) {
 func TestRemoveLimits(t *testing.T) {
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	target := NewTarget()
 	target.SetLimits(2, 4)
 	target.RemoveLimits()
@@ -107,6 +119,8 @@ func TestRemoveLimits(t *testing.T) {
 	}
 }
 func TestSetOwner(t *testing.T) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	target := NewTarget()
@@ -134,6 +148,8 @@ func TestSetOwner(t *testing.T) {
 func TestRemoveOwner(t *testing.T) {
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	target := NewTarget()
 	owner := NewTargetOwner("owner", "owner")
 	if _, err := target.SetOwner(owner); err != nil {
@@ -146,6 +162,8 @@ func TestRemoveOwner(t *testing.T) {
 	}
 }
 func TestGetOwner(t *testing.T) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	target := NewTarget()
@@ -173,6 +191,8 @@ func TestGetOwner(t *testing.T) {
 func TestFinalize(t *testing.T) {
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	target := NewTarget()
 	owner := NewTargetOwner("owner", "owner")
 	if _, err := target.SetOwner(owner); err != nil {
@@ -196,6 +216,8 @@ func TestFinalize(t *testing.T) {
 	}
 }
 func TestNamespacedName(t *testing.T) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	target := NewTarget()

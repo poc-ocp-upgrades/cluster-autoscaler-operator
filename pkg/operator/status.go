@@ -41,6 +41,8 @@ type StatusReporterConfig struct {
 func NewStatusReporter(mgr manager.Manager, cfg *StatusReporterConfig) (*StatusReporter, error) {
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	var err error
 	reporter := &StatusReporter{client: mgr.GetClient(), config: cfg}
 	reporter.configClient, err = osconfig.NewForConfig(mgr.GetConfig())
@@ -52,14 +54,20 @@ func NewStatusReporter(mgr manager.Manager, cfg *StatusReporterConfig) (*StatusR
 func (r *StatusReporter) SetReleaseVersion(version string) {
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	r.config.ReleaseVersion = version
 }
 func (r *StatusReporter) SetRelatedObjects(objs []configv1.ObjectReference) {
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	r.config.RelatedObjects = objs
 }
 func (r *StatusReporter) AddRelatedObjects(objs []configv1.ObjectReference) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	for _, obj := range objs {
@@ -69,9 +77,13 @@ func (r *StatusReporter) AddRelatedObjects(objs []configv1.ObjectReference) {
 func (r *StatusReporter) GetClusterOperator() (*configv1.ClusterOperator, error) {
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	return r.configClient.ConfigV1().ClusterOperators().Get(OperatorName, metav1.GetOptions{})
 }
 func (r *StatusReporter) GetOrCreateClusterOperator() (*configv1.ClusterOperator, error) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	clusterOperator := &configv1.ClusterOperator{ObjectMeta: metav1.ObjectMeta{Name: OperatorName}}
@@ -82,6 +94,8 @@ func (r *StatusReporter) GetOrCreateClusterOperator() (*configv1.ClusterOperator
 	return existing, err
 }
 func (r *StatusReporter) ApplyStatus(status configv1.ClusterOperatorStatus) error {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	var modified bool
@@ -123,11 +137,15 @@ func (r *StatusReporter) ApplyStatus(status configv1.ClusterOperatorStatus) erro
 func (r *StatusReporter) available(reason, message string) error {
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	status := configv1.ClusterOperatorStatus{Conditions: []configv1.ClusterOperatorStatusCondition{{Type: configv1.OperatorAvailable, Status: configv1.ConditionTrue, Reason: reason, Message: message}, {Type: configv1.OperatorProgressing, Status: configv1.ConditionFalse}, {Type: configv1.OperatorFailing, Status: configv1.ConditionFalse}}, Versions: []configv1.OperandVersion{{Name: "operator", Version: r.config.ReleaseVersion}}}
 	klog.Infof("Operator status available: %s", message)
 	return r.ApplyStatus(status)
 }
 func (r *StatusReporter) failing(reason, message string) error {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	status := configv1.ClusterOperatorStatus{Conditions: []configv1.ClusterOperatorStatusCondition{{Type: configv1.OperatorAvailable, Status: configv1.ConditionTrue}, {Type: configv1.OperatorProgressing, Status: configv1.ConditionFalse}, {Type: configv1.OperatorFailing, Status: configv1.ConditionTrue, Reason: reason, Message: message}}}
@@ -137,11 +155,15 @@ func (r *StatusReporter) failing(reason, message string) error {
 func (r *StatusReporter) progressing(reason, message string) error {
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	status := configv1.ClusterOperatorStatus{Conditions: []configv1.ClusterOperatorStatusCondition{{Type: configv1.OperatorAvailable, Status: configv1.ConditionTrue}, {Type: configv1.OperatorProgressing, Status: configv1.ConditionTrue, Reason: reason, Message: message}, {Type: configv1.OperatorFailing, Status: configv1.ConditionFalse}}}
 	klog.Infof("Operator status progressing: %s", message)
 	return r.ApplyStatus(status)
 }
 func (r *StatusReporter) Start(stopCh <-chan struct{}) error {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	interval := 15 * time.Second
@@ -153,6 +175,8 @@ func (r *StatusReporter) Start(stopCh <-chan struct{}) error {
 	return err
 }
 func (r *StatusReporter) ReportStatus() (bool, error) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	ok, err := r.CheckMachineAPI()
@@ -183,6 +207,8 @@ func (r *StatusReporter) ReportStatus() (bool, error) {
 func (r *StatusReporter) CheckMachineAPI() (bool, error) {
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	mao, err := r.configClient.ConfigV1().ClusterOperators().Get("machine-api", metav1.GetOptions{})
 	if err != nil {
 		klog.Errorf("failed to get dependency machine-api status: %v", err)
@@ -196,6 +222,8 @@ func (r *StatusReporter) CheckMachineAPI() (bool, error) {
 	return false, nil
 }
 func (r *StatusReporter) CheckClusterAutoscaler() (bool, error) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	ca := &autoscalingv1.ClusterAutoscaler{}

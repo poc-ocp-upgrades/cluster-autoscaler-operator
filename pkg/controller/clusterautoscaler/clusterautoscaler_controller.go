@@ -35,6 +35,8 @@ const (
 func NewReconciler(mgr manager.Manager, cfg *Config) *Reconciler {
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	return &Reconciler{client: mgr.GetClient(), scheme: mgr.GetScheme(), recorder: mgr.GetRecorder(controllerName), config: cfg}
 }
 
@@ -61,6 +63,8 @@ type Reconciler struct {
 func (r *Reconciler) AddToManager(mgr manager.Manager) error {
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	c, err := controller.New(controllerName, mgr, controller.Options{Reconciler: r})
 	if err != nil {
 		return err
@@ -85,6 +89,8 @@ func (r *Reconciler) AddToManager(mgr manager.Manager) error {
 	return nil
 }
 func (r *Reconciler) Reconcile(request reconcile.Request) (reconcile.Result, error) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	klog.Infof("Reconciling ClusterAutoscaler %s\n", request.Name)
@@ -132,9 +138,13 @@ func (r *Reconciler) Reconcile(request reconcile.Request) (reconcile.Result, err
 func (r *Reconciler) SetConfig(cfg *Config) {
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	r.config = cfg
 }
 func (r *Reconciler) NamePredicate(meta metav1.Object) bool {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	if meta.GetName() != r.config.Name {
@@ -146,6 +156,8 @@ func (r *Reconciler) NamePredicate(meta metav1.Object) bool {
 func (r *Reconciler) CreateAutoscaler(ca *autoscalingv1.ClusterAutoscaler) error {
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	klog.Infof("Creating ClusterAutoscaler deployment: %s\n", r.AutoscalerName(ca))
 	deployment := r.AutoscalerDeployment(ca)
 	if err := controllerutil.SetControllerReference(ca, deployment, r.scheme); err != nil {
@@ -154,6 +166,8 @@ func (r *Reconciler) CreateAutoscaler(ca *autoscalingv1.ClusterAutoscaler) error
 	return r.client.Create(context.TODO(), deployment)
 }
 func (r *Reconciler) UpdateAutoscaler(ca *autoscalingv1.ClusterAutoscaler) error {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	existingDeployment, err := r.GetAutoscaler(ca)
@@ -173,6 +187,8 @@ func (r *Reconciler) UpdateAutoscaler(ca *autoscalingv1.ClusterAutoscaler) error
 func (r *Reconciler) GetAutoscaler(ca *autoscalingv1.ClusterAutoscaler) (*appsv1.Deployment, error) {
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	deployment := &appsv1.Deployment{}
 	nn := r.AutoscalerName(ca)
 	if err := r.client.Get(context.TODO(), nn, deployment); err != nil {
@@ -183,9 +199,13 @@ func (r *Reconciler) GetAutoscaler(ca *autoscalingv1.ClusterAutoscaler) (*appsv1
 func (r *Reconciler) AutoscalerName(ca *autoscalingv1.ClusterAutoscaler) types.NamespacedName {
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	return types.NamespacedName{Name: fmt.Sprintf("cluster-autoscaler-%s", ca.Name), Namespace: r.config.Namespace}
 }
 func (r *Reconciler) UpdateAnnotations(obj metav1.Object) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	annotations := obj.GetAnnotations()
@@ -199,6 +219,8 @@ func (r *Reconciler) UpdateAnnotations(obj metav1.Object) {
 func (r *Reconciler) AutoscalerDeployment(ca *autoscalingv1.ClusterAutoscaler) *appsv1.Deployment {
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	namespacedName := r.AutoscalerName(ca)
 	labels := map[string]string{"cluster-autoscaler": ca.Name, "app": "cluster-autoscaler"}
 	annotations := map[string]string{util.CriticalPodAnnotation: "", util.ReleaseVersionAnnotation: r.config.ReleaseVersion}
@@ -209,6 +231,8 @@ func (r *Reconciler) AutoscalerDeployment(ca *autoscalingv1.ClusterAutoscaler) *
 func (r *Reconciler) AutoscalerPodSpec(ca *autoscalingv1.ClusterAutoscaler) *corev1.PodSpec {
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	args := AutoscalerArgs(ca, r.config)
 	if r.config.ExtraArgs != "" {
 		args = append(args, r.config.ExtraArgs)
@@ -217,6 +241,8 @@ func (r *Reconciler) AutoscalerPodSpec(ca *autoscalingv1.ClusterAutoscaler) *cor
 	return spec
 }
 func (r *Reconciler) objectReference(obj runtime.Object) *corev1.ObjectReference {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	ref, err := reference.GetReference(r.scheme, obj)

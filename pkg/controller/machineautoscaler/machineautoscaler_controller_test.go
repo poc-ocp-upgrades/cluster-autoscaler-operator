@@ -17,15 +17,21 @@ const TestNamespace = "test-namespace"
 func init() {
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	apis.AddToScheme(scheme.Scheme)
 }
 func newFakeReconciler(cfg *Config, initObjects ...runtime.Object) *Reconciler {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	fakeClient := fakeclient.NewFakeClient(initObjects...)
 	return &Reconciler{client: fakeClient, scheme: scheme.Scheme, recorder: record.NewFakeRecorder(128), config: cfg}
 }
 func TestRemoveSupportedGVK(t *testing.T) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	var testCases = []struct {
@@ -47,6 +53,8 @@ func TestRemoveSupportedGVK(t *testing.T) {
 	}
 }
 func TestValidateReference(t *testing.T) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	var validateReferenceTests = []struct {

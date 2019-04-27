@@ -24,6 +24,8 @@ import (
 func init() {
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	apis.AddToScheme(scheme.Scheme)
 }
 
@@ -53,6 +55,8 @@ var (
 func TestCheckMachineAPI(t *testing.T) {
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	testCases := []struct {
 		label		string
 		expectedBool	bool
@@ -75,6 +79,8 @@ func TestCheckMachineAPI(t *testing.T) {
 func TestCheckCheckClusterAutoscaler(t *testing.T) {
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	testCases := []struct {
 		label		string
 		expectedBool	bool
@@ -95,6 +101,8 @@ func TestCheckCheckClusterAutoscaler(t *testing.T) {
 	}
 }
 func TestStatusChanges(t *testing.T) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	testCases := []struct {
@@ -129,6 +137,8 @@ func TestStatusChanges(t *testing.T) {
 	}
 }
 func TestReportStatus(t *testing.T) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	testCases := []struct {

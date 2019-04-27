@@ -20,6 +20,8 @@ type Operator struct {
 func New(cfg *Config) (*Operator, error) {
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	operator := &Operator{config: cfg}
 	clientConfig, err := config.GetConfig()
 	if err != nil {
@@ -47,6 +49,8 @@ func New(cfg *Config) (*Operator, error) {
 func (o *Operator) RelatedObjects() []configv1.ObjectReference {
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	relatedNamespaces := map[string]string{}
 	relatedNamespaces[o.config.WatchNamespace] = ""
 	relatedNamespaces[o.config.LeaderElectionNamespace] = ""
@@ -60,6 +64,8 @@ func (o *Operator) RelatedObjects() []configv1.ObjectReference {
 func (o *Operator) AddControllers() error {
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	ca := clusterautoscaler.NewReconciler(o.manager, &clusterautoscaler.Config{ReleaseVersion: o.config.ReleaseVersion, Name: o.config.ClusterAutoscalerName, Image: o.config.ClusterAutoscalerImage, Replicas: o.config.ClusterAutoscalerReplicas, Namespace: o.config.ClusterAutoscalerNamespace, CloudProvider: o.config.ClusterAutoscalerCloudProvider, Verbosity: o.config.ClusterAutoscalerVerbosity, ExtraArgs: o.config.ClusterAutoscalerExtraArgs})
 	if err := ca.AddToManager(o.manager); err != nil {
 		return err
@@ -71,6 +77,8 @@ func (o *Operator) AddControllers() error {
 	return nil
 }
 func (o *Operator) Start() error {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	stopCh := signals.SetupSignalHandler()

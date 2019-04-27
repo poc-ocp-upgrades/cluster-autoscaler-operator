@@ -7,10 +7,14 @@ import (
 func (in *CrossVersionObjectReference) DeepCopyInto(out *CrossVersionObjectReference) {
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	*out = *in
 	return
 }
 func (in *CrossVersionObjectReference) DeepCopy() *CrossVersionObjectReference {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	if in == nil {
@@ -23,6 +27,8 @@ func (in *CrossVersionObjectReference) DeepCopy() *CrossVersionObjectReference {
 func (in *MachineAutoscaler) DeepCopyInto(out *MachineAutoscaler) {
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	*out = *in
 	out.TypeMeta = in.TypeMeta
 	in.ObjectMeta.DeepCopyInto(&out.ObjectMeta)
@@ -31,6 +37,8 @@ func (in *MachineAutoscaler) DeepCopyInto(out *MachineAutoscaler) {
 	return
 }
 func (in *MachineAutoscaler) DeepCopy() *MachineAutoscaler {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	if in == nil {
@@ -43,12 +51,16 @@ func (in *MachineAutoscaler) DeepCopy() *MachineAutoscaler {
 func (in *MachineAutoscaler) DeepCopyObject() runtime.Object {
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	if c := in.DeepCopy(); c != nil {
 		return c
 	}
 	return nil
 }
 func (in *MachineAutoscalerList) DeepCopyInto(out *MachineAutoscalerList) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	*out = *in
@@ -66,6 +78,8 @@ func (in *MachineAutoscalerList) DeepCopyInto(out *MachineAutoscalerList) {
 func (in *MachineAutoscalerList) DeepCopy() *MachineAutoscalerList {
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	if in == nil {
 		return nil
 	}
@@ -76,6 +90,8 @@ func (in *MachineAutoscalerList) DeepCopy() *MachineAutoscalerList {
 func (in *MachineAutoscalerList) DeepCopyObject() runtime.Object {
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	if c := in.DeepCopy(); c != nil {
 		return c
 	}
@@ -84,11 +100,15 @@ func (in *MachineAutoscalerList) DeepCopyObject() runtime.Object {
 func (in *MachineAutoscalerSpec) DeepCopyInto(out *MachineAutoscalerSpec) {
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	*out = *in
 	out.ScaleTargetRef = in.ScaleTargetRef
 	return
 }
 func (in *MachineAutoscalerSpec) DeepCopy() *MachineAutoscalerSpec {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	if in == nil {
@@ -101,6 +121,8 @@ func (in *MachineAutoscalerSpec) DeepCopy() *MachineAutoscalerSpec {
 func (in *MachineAutoscalerStatus) DeepCopyInto(out *MachineAutoscalerStatus) {
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	*out = *in
 	if in.LastTargetRef != nil {
 		in, out := &in.LastTargetRef, &out.LastTargetRef
@@ -110,6 +132,8 @@ func (in *MachineAutoscalerStatus) DeepCopyInto(out *MachineAutoscalerStatus) {
 	return
 }
 func (in *MachineAutoscalerStatus) DeepCopy() *MachineAutoscalerStatus {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	if in == nil {

@@ -46,14 +46,20 @@ var TestReconcilerConfig = &Config{Name: "test", Namespace: TestNamespace, Cloud
 func init() {
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	apis.AddToScheme(scheme.Scheme)
 }
 func NewClusterAutoscaler() *autoscalingv1.ClusterAutoscaler {
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	return &autoscalingv1.ClusterAutoscaler{TypeMeta: metav1.TypeMeta{Kind: "ClusterAutoscaler", APIVersion: "autoscaling.openshift.io/v1"}, ObjectMeta: metav1.ObjectMeta{Name: "test", Namespace: TestNamespace}, Spec: autoscalingv1.ClusterAutoscalerSpec{MaxPodGracePeriod: &MaxPodGracePeriod, PodPriorityThreshold: &PodPriorityThreshold, ResourceLimits: &autoscalingv1.ResourceLimits{MaxNodesTotal: &MaxNodesTotal, Cores: &autoscalingv1.ResourceRange{Min: CoresMin, Max: CoresMax}, Memory: &autoscalingv1.ResourceRange{Min: MemoryMin, Max: MemoryMax}, GPUS: []autoscalingv1.GPULimit{{Type: NvidiaGPU, Min: NvidiaGPUMin, Max: NvidiaGPUMax}}}, ScaleDown: &autoscalingv1.ScaleDownConfig{Enabled: true, DelayAfterAdd: &ScaleDownDelayAfterAdd, UnneededTime: &ScaleDownUnneededTime}}}
 }
 func includesStringWithPrefix(list []string, prefix string) bool {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	for i := range list {
@@ -66,6 +72,8 @@ func includesStringWithPrefix(list []string, prefix string) bool {
 func includeString(list []string, item string) bool {
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	for i := range list {
 		if list[i] == item {
 			return true
@@ -74,6 +82,8 @@ func includeString(list []string, item string) bool {
 	return false
 }
 func TestAutoscalerArgs(t *testing.T) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	ca := NewClusterAutoscaler()
@@ -94,15 +104,21 @@ func TestAutoscalerArgs(t *testing.T) {
 func TestCanGetca(t *testing.T) {
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_ = fakeclient.NewFakeClient(NewClusterAutoscaler())
 }
 func newFakeReconciler(initObjects ...runtime.Object) *Reconciler {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	fakeClient := fakeclient.NewFakeClient(initObjects...)
 	return &Reconciler{client: fakeClient, scheme: scheme.Scheme, recorder: record.NewFakeRecorder(128), config: TestReconcilerConfig}
 }
 func TestReconcile(t *testing.T) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	ca := NewClusterAutoscaler()
@@ -127,6 +143,8 @@ func TestReconcile(t *testing.T) {
 func TestObjectReference(t *testing.T) {
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	testCases := []struct {
 		label		string
 		object		runtime.Object
@@ -146,6 +164,8 @@ func TestObjectReference(t *testing.T) {
 	}
 }
 func TestUpdateAnnotations(t *testing.T) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	deployment := helpers.NewTestDeployment(&appsv1.Deployment{TypeMeta: metav1.TypeMeta{APIVersion: "apps/v1", Kind: "Deployment"}, ObjectMeta: metav1.ObjectMeta{Name: "test", Namespace: "test-namespace"}})

@@ -21,6 +21,8 @@ var (
 func MachineTargetFromObject(obj runtime.Object) (*MachineTarget, error) {
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	u, err := runtime.DefaultUnstructuredConverter.ToUnstructured(obj)
 	if err != nil {
 		return nil, err
@@ -34,6 +36,8 @@ type MachineTarget struct{ unstructured.Unstructured }
 func (mt *MachineTarget) NeedsUpdate(min, max int) bool {
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	currentMin, currentMax, err := mt.GetLimits()
 	if err != nil {
 		return true
@@ -43,6 +47,8 @@ func (mt *MachineTarget) NeedsUpdate(min, max int) bool {
 	return minDiff || maxDiff
 }
 func (mt *MachineTarget) SetLimits(min, max int) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	annotations := mt.GetAnnotations()
@@ -56,10 +62,14 @@ func (mt *MachineTarget) SetLimits(min, max int) {
 func (mt *MachineTarget) RemoveLimits() bool {
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	annotations := []string{minSizeAnnotation, maxSizeAnnotation}
 	return mt.RemoveAnnotations(annotations)
 }
 func (mt *MachineTarget) GetLimits() (min, max int, err error) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	annotations := mt.GetAnnotations()
@@ -81,6 +91,8 @@ func (mt *MachineTarget) GetLimits() (min, max int, err error) {
 func (mt *MachineTarget) SetOwner(owner metav1.Object) (bool, error) {
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	annotations := mt.GetAnnotations()
 	if annotations == nil {
 		annotations = make(map[string]string)
@@ -99,10 +111,14 @@ func (mt *MachineTarget) SetOwner(owner metav1.Object) (bool, error) {
 func (mt *MachineTarget) RemoveOwner() bool {
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	annotations := []string{MachineTargetOwnerAnnotation}
 	return mt.RemoveAnnotations(annotations)
 }
 func (mt *MachineTarget) GetOwner() (types.NamespacedName, error) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	nn := types.NamespacedName{}
@@ -124,6 +140,8 @@ func (mt *MachineTarget) GetOwner() (types.NamespacedName, error) {
 func (mt *MachineTarget) RemoveAnnotations(keys []string) bool {
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	annotations := mt.GetAnnotations()
 	modified := false
 	for _, key := range keys {
@@ -138,11 +156,15 @@ func (mt *MachineTarget) RemoveAnnotations(keys []string) bool {
 func (mt *MachineTarget) Finalize() bool {
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	limitsModified := mt.RemoveLimits()
 	ownerModified := mt.RemoveOwner()
 	return limitsModified || ownerModified
 }
 func (mt *MachineTarget) NamespacedName() types.NamespacedName {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	return types.NamespacedName{Name: mt.GetName(), Namespace: mt.GetNamespace()}
