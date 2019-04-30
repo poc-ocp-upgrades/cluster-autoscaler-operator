@@ -1,8 +1,3 @@
-// NOTE: Boilerplate only.  Ignore this file.
-
-// Package v1 contains API Schema definitions for the autoscaling v1 API group
-// +k8s:deepcopy-gen=package,register
-// +groupName=autoscaling.openshift.io
 package v1
 
 import (
@@ -11,9 +6,6 @@ import (
 )
 
 var (
-	// SchemeGroupVersion is group version used to register these objects
-	SchemeGroupVersion = schema.GroupVersion{Group: "autoscaling.openshift.io", Version: "v1"}
-
-	// SchemeBuilder is used to add go types to the GroupVersionKind scheme
-	SchemeBuilder = &scheme.Builder{GroupVersion: SchemeGroupVersion}
+	SchemeGroupVersion	= schema.GroupVersion{Group: "autoscaling.openshift.io", Version: "v1"}
+	SchemeBuilder		= &scheme.Builder{GroupVersion: SchemeGroupVersion}
 )
